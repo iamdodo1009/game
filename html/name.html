@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>NAME::The Deviant</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <script src="../js/main.js"></script>
+  <script src="../js/jquery-3.7.1.js"></script>
+</head>
+<script>
+	function init(){
+		$("#player").focus();
+	}
+	function goGame(e){
+		if(e.keyCode == 13){
+			var inputNm = $("#player").val();
+			if(inputNm == ''){
+				alert("이름을 입력해야 게임이 시작됩니다!!");
+				$("#player").focus();
+			}else{
+				if(inputNm.replace(' ', '').length < 2){
+					alert("이름은 2글자 이상 넣어야 합니다!!");
+					$("#player").focus();
+				}else{
+					if(confirm("당신의 이름 "+inputNm+" 맞나요?")){
+						localStorage.setItem('player', inputNm);
+						setTimeout( function(){
+							location.href = "../html/game1.html";
+							}, 500);
+					}else{
+						$("#player").focus();
+					}
+				}
+			}
+		}
+	}
+</script>
+<body class="name-bg" onload="init()">
+	<div class="form">
+		<input type="text" id="player" onkeypress="goGame(event)" placeholder="          입력후 엔터를 치면 게임이 시작됩니다" class="player-input" autocomplete="off">
+	</div>
+  <img src="../image/preview_icon.png" alt="Back" class="preview-icon" onclick="goIndex()">
+</body>
+</html>

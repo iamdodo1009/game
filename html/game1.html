@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>START::The Deviant</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <script src="../js/main.js" defer></script>
+  <script src="../js/jquery-3.7.1.js"></script>
+</head>
+<script>
+function init(){
+	$("#titleDiv").html(getPlayerNm()+"");
+}
+function goGame2(){
+	alert('준비중!!');
+}
+function getHint(hintNo){
+}
+function getHint2(hintNo){
+	if(hintNo == 1){
+		$("#hintDiv_1").css("display","block");
+		//alert('힌트를 알려주겠다!');
+	}else if(hintNo == 2){
+		$("#hintDiv_2").css("display","block");
+		//alert('어떻게 알았지? ㅋㅋㅋ');
+	}
+}
+const gameSummaryDiv = $("#gameSummaryDiv");
+const gameSummaryStr = '오늘도 xx 안 온건가? 벌써 며칠째 계속 학교를 안 나오네...';
+let tempText = '';
+let count = 0;
+function typing() {
+	let charStr = gameSummaryStr[count++];
+	if(typeof charStr != 'undefined'){
+	  tempText += charStr;
+	  $("#gameSummaryDiv").html(tempText);
+	  if (count > gameSummaryStr.length) {
+		tempText = '';
+		//count = 0;
+	  }
+	}
+}
+setInterval(typing, 70);
+</script>
+<body class="game1-bg" onload="init()">
+  <a href="javascript:getHint(1);" class="title-link">
+    <div class="game1-title-box1" id="titleDiv"></div>
+  </a>
+  <!-- <img src="../image/icon.png" alt="아이콘" class="small-icon" onclick="getHint(2)"> -->
+  
+  <a href="javascript:getHint(2);" class="title-link">
+    <div class="game1-title-box2" id="hintDiv_1" style="display:none">
+      오호, 제법인데. 힌트는 오른쪽 구석에...
+    </div>
+  </a>  
+  <a href="javascript:getHint(2);" class="title-link">
+    <div class="game1-title-box3" id="hintDiv_2" style="display:none">
+      누군가의 모함이 있었어...
+    </div>
+  </a>    
+  
+  
+  <div class="footer-banner" id="gameSummaryDiv">
+  </div>  
+  <img src="../image/preview_icon.png" alt="Back" class="preview-icon" style="z-index:999" onclick="goBack()">
+  <img src="../image/next_icon.png" alt="Next" class="next-icon"  style="z-index:999" onclick="goGame2()">
+</body>
+</html>
