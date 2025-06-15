@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>The Deviant::game2</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <script src="../js/main.js"></script>
+  <script src="../js/jquery-3.7.1.js"></script>
+  <style>
+    .icon1 {
+	  display: none;
+      position: absolute;
+      top: 60%;  
+      left: 85%; 
+      width: 15%; 
+	  height: 20%;
+      #aspect-ratio: 1;
+      cursor: pointer;
+    }
+    .icon2 {
+	  display: none;
+      position: absolute;
+      top: 25%;  
+      left: 7%; 
+      width: 19%; 
+	  height: 16%;
+      #aspect-ratio: 1;
+      cursor: pointer;
+    }
+    .icon3 {
+	  display: none;
+      position: absolute;
+      top: 75%;  
+      left: 65%; 
+      width: 13%; 
+	  height: 25%;
+      #aspect-ratio: 1;
+      cursor: pointer;
+    }
+    .icon4 {
+	  display: none;
+      position: absolute;
+      top: 50%;  
+      left: 25%; 
+      width: 15%; 
+	  height: 25%;
+      #aspect-ratio: 1;
+      cursor: pointer;
+    }	
+    .icon5 {
+	  display: none;
+      position: absolute;
+      top: 0%;  
+      left: 0%; 
+      width: 100%; 
+	  height: 100%;
+      #aspect-ratio: 1;
+      cursor: pointer;
+    }	
+    .icon6 {
+	  display: none;
+      position: absolute;
+      top: 34%;  
+      left: 31%; 
+      width: 15%; 
+	  height: 22%;
+      #aspect-ratio: 1;
+      cursor: pointer;
+    }	
+    .icon7 {
+	  display: none;
+      position: absolute;
+      top: 34%;  
+      left: 31%; 
+      width: 15%; 
+	  height: 22%;
+    }		
+    .icon8 {
+	  display: none;
+      position: absolute;
+      top: 34%;  
+      left: 51%; 
+      width: 15%; 
+	  height: 22%;
+    }		
+  </style>  
+</head>
+<script>
+
+function getHint(hintNo){
+	if(hintNo == '3'){
+		$("#hintDiv_1").css("display","none");
+		$("#hintDiv_2").css("display","none");
+		$("#hintDiv_3").css("display","none");
+		$("#hintDiv_4").css("display","none");
+		$("#goodJobBgImg").css("display","block");		
+		$("#goodJobTextImg").css("display","block");		
+		$("#goodJobKeyImg").css("display","block");				
+		$("#titleDiv").css("display","block");
+		$("#gameSummaryDiv").html("음? 이 쪽지는 뭐지?");		
+		$("#gameSummaryDiv").css("display","flex");				
+		isSolvedQuize = true;
+	}else{
+		if(hintNo == '5'){
+			$("#goodJobTextImg").css("display","none");		
+			$("#goodJobTextOpenImg").css("display","block");		
+			$("#gameSummaryDiv").html("이게 뭐지?");		
+			$("#nextIconImg").css("display", "block");	
+		}else{
+			showCustomAlert('경고','그곳은 아니야! 다른 곳을 찾아봐!');
+		}
+	}
+}
+//const gameSummaryStr = "아 맞다";
+const gameSummaryStr = "아 맞다, 과학실 키. 과학선생님한테 돌려드린다는 걸 깜빡했네.<br> 내가 과학실 키를 어디에 뒀더라?";
+setInterval(typing, 70, '2');
+</script>
+<body onload="printPlayerNm()">
+  <div class="container">
+	  <img src="../image/game2_background.jpg" alt="배경" class="background">
+	  <img src="../image/icon_common_box.png" id="hintDiv_1" style="display:none" alt="책장" class="icon1" onclick="getHint('1')">
+	  <img src="../image/icon_common_box.png" id="hintDiv_2" style="display:none" alt="책꽂이" class="icon2" onclick="getHint('2')">
+	  <img src="../image/icon_common_box.png" id="hintDiv_3" style="display:none" alt="서랍" class="icon3" onclick="getHint('3')">
+	  <img src="../image/icon_common_box.png" id="hintDiv_4" style="display:none" alt="캐비넷" class="icon4" onclick="getHint('4')">
+	  <img src="../image/game2_icon5.png" id="goodJobBgImg" style="display:none" alt="서랍Bg" class="icon5">
+	  <img src="../image/game2_icon6.png" id="goodJobTextImg" style="display:none" alt="서랍쪽지" class="icon6" onclick="getHint('5')">
+	  <img src="../image/game2_icon7.png" id="goodJobTextOpenImg" style="display:none" alt="서랍쪽지펼쳐진것" class="icon7">
+	  <img src="../image/game2_icon8.png" id="goodJobKeyImg" style="display:none" alt="키" class="icon8">	  
+  
+	  <div class="player-name-box" id="titleDiv"></div>
+	  <div class="footer-banner" id="gameSummaryDiv"></div>  
+	  <img src="../image/preview_icon.png" alt="Back" id="previewIconImg" class="preview-icon" style="display:none;z-index:999" onclick="goBack()">
+	  <img src="../image/next_icon.png" alt="Next" id="nextIconImg" class="next-icon" style="z-index:999" onclick="goNext('game3')">
+  </div>
+  
+<!-- S : dim / 알림 -->  
+  <div class="dim-overlay" id="dim"></div>
+  <div class="custom-alert" id="alertBox">
+    <h2 id="alertTitle">알림</h2>
+    <p id="alertMessage">메시지 내용</p>
+    <button onclick="closeCustomAlert()">확인</button>
+  </div>
+<!-- E : dim / 알림 -->    
+  
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>도서실에서</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <script src="../js/main.js"></script>
+  <script src="../js/jquery-3.7.1.js"></script>
+  <style>
+    .container {
+      position: relative;
+      width: 100%;
+      max-width: 1280px;
+      margin: auto;
+      #aspect-ratio: 5 / 3; /* 또는 padding-top: 60% */
+    }
+    .background {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: cover;
+    }
+  </style>  
+</head>
+<script>
+const gameSummaryStr = "남의 사물함을 맘대로 열어보면 안되긴 하지만,<br>뭔가 나한테 하고 싶은 말이 있는 것 같아.";
+setInterval(typing, 70, '2');
+</script>
+<body onload="printPlayerNm()">
+  <div class="container">
+	  <img src="../image/game6_background.jpg" alt="배경" class="background">
+	  <div class="player-name-box" id="titleDiv"></div>
+	  <div class="footer-banner" id="gameSummaryDiv"></div>  
+	  <img src="../image/preview_icon.png" alt="Back" id="previewIconImg" class="preview-icon" style="display:none;z-index:999" onclick="goBack()">
+	  <img src="../image/next_icon.png" alt="Next" id="nextIconImg" class="next-icon" style="z-index:999" onclick="showCustomAlert('경고','글자를 입력하시오.')">
+  </div>
+  
+<!-- S : dim / 알림 -->  
+  <div class="dim-overlay" id="dim"></div>
+  <div class="custom-alert" id="alertBox">
+    <h2 id="alertTitle">알림</h2>
+    <p id="alertMessage">메시지 내용</p>
+    <button onclick="closeCustomAlert()">확인</button>
+  </div>
+<!-- E : dim / 알림 -->  
+  
+</body>
+</html>

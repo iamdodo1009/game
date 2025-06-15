@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>The Deviant::game1</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <script src="../js/main.js"></script>
+  <script src="../js/jquery-3.7.1.js"></script>
+</head>
+<script>
+const gameSummaryStr = '오늘도  서미연 는 안 온건가? 벌써 며칠째 계속 학교를 안 나오네...<br>원래도 잘 안 나왔었는데, 뭐... 가서 컴퓨터 끄고 퇴근이나 해야지.';
+setInterval(typing, 70, '1');
+</script>
+
+<body onload="printPlayerNm()">
+  <div class="container">
+	  <img src="../image/game1_background.png" alt="배경" class="background">
+	  <div class="player-name-box" id="titleDiv"></div>
+	  <div class="footer-banner" id="gameSummaryDiv"></div>  
+	  <img src="../image/preview_icon.png" alt="Back" id="previewIconImg" class="preview-icon" style="z-index:999" onclick="goBack()">
+	  <img src="../image/next_icon.png" alt="Next" id="nextIconImg" class="next-icon" style="z-index:999" onclick="goNext('game2_교무실')">
+  </div>
+  
+<!-- S : dim / 알림 -->  
+  <div class="dim-overlay" id="dim"></div>
+  <div class="custom-alert" id="alertBox">
+    <h2 id="alertTitle">알림</h2>
+    <p id="alertMessage">메시지 내용</p>
+    <button onclick="closeCustomAlert()">확인</button>
+  </div>
+<!-- E : dim / 알림 -->     
+  
+</body>
+</html>
