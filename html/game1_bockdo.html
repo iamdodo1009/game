@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>The Deviant::game1</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <script src="../js/main.js"></script>
+  <script src="../js/jquery-3.7.1.js"></script>
+</head>
+<script>
+const gameSummaryStr = '오늘도  서미연 는 안 온건가? 벌써 며칠째 계속 학교를 안 나오네...<br>원래도 잘 안 나왔었는데, 뭐... 가서 컴퓨터 끄고 퇴근이나 해야지.';
+setInterval(typing, 70, '1');
+</script>
+
+<body onload="onloadFn('game1_bockdo')">
+	<div class="container" id="baseContainer">
+		<img src="../image/game1_background.png" alt="배경" class="background">
+		<img src="../image/common_icon_inventory.png" alt="인벤토리 아이콘" id="inventoryIconImg" class="common-icon-inventory" style="z-index:999" onclick="showInventory()">
+		<img src="../image/common_icon_map.png" alt="맵 아이콘" id="mapIconImg" class="common-icon-map" style="z-index:999" onclick="showMap()">
+		<img src="../image/common_icon_close.png" alt="닫기 아이콘" id="closeIconImg" class="common-icon-close" onclick="closeLayer()">
+		  
+		<div class="overlay" id="layerContainer" style="display:none"></div><!-- inventory / map -->
+		  
+		<div class="player-left-right">
+			<div class="player-name-box" id="titleDiv"></div>
+			<div class="footer-banner" id="gameSummaryDiv"></div>  
+			<img src="../image/common_icon_preview_icon.png" alt="Back" id="previewIconImg" class="preview-icon" style="z-index:999" onclick="goBack()">
+			<img src="../image/common_icon_next_icon.png" alt="Next" id="nextIconImg" class="next-icon" style="z-index:999" onclick="goNext('game2_교무실')">
+		</div>
+	</div>
+	
+	<div class="common-footer" id="commonFooter"> <!-- dim / alert -->
+	</div>
+  
+</body>
+</html>
