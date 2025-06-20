@@ -16,6 +16,7 @@ body {
       width: 100%;
       max-width: 1280px;
       margin: auto;
+	  #z-index:100;
       #aspect-ratio: 5 / 3; /* 또는 padding-top: 60% */
     }
     .background {
@@ -23,18 +24,100 @@ body {
       height: 100%;
       display: block;
       object-fit: cover;
+	  z-index:100;
     }
+
+    .map_0_all {
+      position: absolute;
+      top: 10%; left: 10%;
+      width: 80%;
+      display: none;
+	  z-index: 9999;
+    }
+    .inventory {
+      position: absolute;
+      top: 10%; left: 10%;
+      width: 80%;
+      display: none;
+	  z-index: 9990;
+    }	
+
+    .inventory_item_1 {
+      position: absolute;
+      top: 28%;
+      left: 21.5%;
+      width: 8%;
+      display: none;
+      z-index: 9992;
+    }	
+	.inventory_item_1:hover {
+		cursor: pointer;
+	  /* 마우스 오버시 커서 변경 or 시각 효과 */
+	  #background-color: rgba(255, 0, 0, 0.3); 
+	}	
+    .inventory_item_2 {
+      position: absolute;
+      top: 28%;
+      left: 33.7%;
+      width: 8%;
+      display: none;
+      z-index: 9992;
+    }		
 
     /* dim 배경 */
     .dim-overlay {
       position: fixed;
       top: 0; left: 0;
       width: 100vw; height: 100vh;
-      background: rgba(0, 0, 0, 0.6);
-      z-index: 1000;
+      background: rgba(0, 0, 0, 0.4);
+      z-index: 3000;
       display: none;
     }
-
+    .dim-small-layer {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100vw; height: 100vh;
+      background: rgba(0, 0, 0, 0.6);
+      z-index: 9996;
+      display: none;
+    }	
+	
+    .inventory_detail {
+      position: absolute;
+      top: 23%;
+      left: 13%;
+      width: 75%;
+      display: none;
+      z-index: 9996;
+    }		
+    /* inventory 모달 박스 */
+    .custom-alert-inventory {
+      position: absolute;
+      top: 27%; left: 41.3%;
+      width: 13%;	  
+	  height: 28%;	  
+      background: #f1e9df;
+      border-radius: 8px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+      padding: 20px 30px;
+      z-index: 99999;
+      display: none;
+      text-align: center;
+    }
+	
+	.inventory-box-close-icon{
+      position: absolute;
+      top: 4%; left: 87%;
+      width: 10%;	
+      display: none;	
+      cursor: pointer;	  
+	}
+    .custom-alert-inventory h2 {
+      margin-top: 0;
+      font-size: 20px;
+      color: #895615;
+    }
+ 
     /* alert 모달 박스 */
     .custom-alert {
       position: fixed;
@@ -44,7 +127,7 @@ body {
       border-radius: 8px;
       box-shadow: 0 4px 20px rgba(0,0,0,0.2);
       padding: 20px 30px;
-      z-index: 1001;
+      z-index: 4001;
       display: none;
       min-width: 300px;
       max-width: 90%;
@@ -76,6 +159,33 @@ body {
     .custom-alert button:hover {
       background: #45a049;
     }
+
+.common-icon-inventory {
+  position: absolute;
+  top: 4%;  
+  left: 83%; 
+  width: 5%; 
+  height: 5%;
+  cursor: pointer;
+}
+.common-icon-map {
+  position: absolute;
+  top: 4%;  
+  left: 88%; 
+  width: 5%; 
+  height: 5%;
+  cursor: pointer;
+}
+.common-icon-close {
+  position: absolute;
+  top: 4%;  
+  left: 94%; 
+  width: 5%; 
+  height: 5%;
+  cursor: pointer;
+  display: none;
+  z-index: 9993;
+}
 
 .preview-icon {
   position: absolute;
@@ -354,3 +464,106 @@ body {
       min-width: 10%;
       text-align: left;
     }	
+	
+	
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  #z-index: 5000;
+  #pointer-events: none; /* 기본적으로 클릭 방지, 필요한 곳만 허용 */
+}
+.player-left-right {
+#	position: absolute;
+	z-index: 2900;
+}
+.common-footer {
+#	position: absolute;
+#	z-index: 3000;
+}
+
+.overlay .map {
+  position: absolute;
+  width: 6%;
+  height: 6%;
+  left: 90%;
+  pointer-events: auto; /* 이 영역만 클릭 허용 */
+  cursor: pointer;
+  z-index: 999999;
+  display: none;
+  background-color: rgb(209, 195, 195, 0.7);
+  color:white;
+  border: 2px solid white;              /* 흰색 테두리 */
+  display: flex;                        /* 중앙 정렬을 위한 flexbox 사용 */
+  align-items: center;                 /* 수직 중앙 정렬 */
+  justify-content: center;             /* 수평 중앙 정렬 */
+  font-weight: bold;                   /* 텍스트 강조 (선택) */
+  text-align: center;
+  border-radius: 4px;                  /* 선택: 박스 모서리 둥글게 */  
+  text-decoration: none;       /* 밑줄 제거 */
+  font-size: 1.2em;                   /* 글자 크기 적당히 조절 */
+  line-height: 2.3;                   /* 혹시 필요할 경우 기본 줄간격 */
+}
+/* 마우스 오버 시 효과 */
+.overlay .map:hover {
+  background-color: rgba(255, 255, 255, 0.3);
+  border-color: #ffffff;
+}
+/* 클릭해서 선택된 경우 스타일 */
+.overlay .map.selected {
+  background-color: rgba(255, 255, 255, 0.9);
+  color: black;
+  border-color: #fff;
+}
+
+/* 특정 부분만 클릭 가능하도록 하려면 예: */
+.overlay .clickable-area {
+  position: absolute;
+  top: 52.5%;
+  left: 48.5%;
+  width: 9.5%;
+  height: 18.5%;
+  pointer-events: auto; /* 이 영역만 클릭 허용 */
+  cursor: pointer;
+  z-index: 99999;
+  display: none;
+  #background-color: rgba(255, 0, 0, 0.3); /* 디버깅용 */
+}
+.overlay .clickable-area:hover {
+  /* 마우스 오버시 커서 변경 or 시각 효과 */
+  background-color: rgba(255, 0, 0, 0.3); 
+}
+.overlay .clickable-area1 {
+  position: absolute;
+  top: 31.5%;
+  left: 13%;
+  width: 9.5%;
+  height: 18.5%;
+  pointer-events: auto; /* 이 영역만 클릭 허용 */
+  cursor: pointer;
+  z-index: 99999;
+  display: none;  
+  #background-color: rgba(255, 0, 0, 0.3); /* 디버깅용 */
+}
+.overlay .clickable-area1:hover {
+  /* 마우스 오버시 커서 변경 or 시각 효과 */
+  background-color: rgba(255, 0, 0, 0.3); 
+}
+.overlay .clickable-area2 {
+  position: absolute;
+  top: 15%;
+  left: 24.5%;
+  width: 48.9%;
+  height: 17.5%;
+  pointer-events: auto; /* 이 영역만 클릭 허용 */
+  cursor: pointer;
+  z-index: 99999;
+  display: none;  
+  #background-color: rgba(255, 0, 0, 0.3); /* 디버깅용 */
+}
+.overlay .clickable-area2:hover {
+  /* 마우스 오버시 커서 변경 or 시각 효과 */
+  background-color: rgba(255, 0, 0, 0.3); 
+}
